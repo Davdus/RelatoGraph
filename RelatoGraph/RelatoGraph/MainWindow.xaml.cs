@@ -31,16 +31,27 @@ namespace RelatoGraph
             String aString = SetA.Text;
             String bString = SetB.Text;
             String rString = Relation.Text;
+
+
+            Relation r = new Relation();
             Label l = new Label();
+            l.Content = r.UserInput(',', aString).ToString();
+            TopGrid.Children.Add(l);
+
+
+
+            /*Label l = new Label();
             l.Name = "Label" + counter;
             l.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
             counter++;
 
-            TopGrid.Children.Add(l);
+            TopGrid.Children.Add(l);*/
 
             SetA.Clear();
             SetB.Clear();
             Relation.Clear();
+
+
 
             SetA.Focus();
         }
