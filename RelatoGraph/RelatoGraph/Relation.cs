@@ -49,7 +49,10 @@ namespace RelatoGraph
 
         public List<int> UserInput(char split, String text)
         {
+            text.Split(split);
+            String[] content = new String[text.Length];
 
+            return null;
         }
 
     }
