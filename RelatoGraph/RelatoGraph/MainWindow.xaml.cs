@@ -42,6 +42,8 @@ namespace RelatoGraph
             SetB.Clear();
             Relation.Clear();
 
+
+
             SetA.Focus();
         }
     }
