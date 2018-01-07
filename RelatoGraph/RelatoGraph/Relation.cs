@@ -18,7 +18,7 @@ namespace RelatoGraph
             get { return set1; }
             set
             {
-
+                set1 = value;
             }
         }
 
@@ -27,7 +27,7 @@ namespace RelatoGraph
             get { return set2; }
             set
             {
-                
+                set2 = value;
             }
         }
 
@@ -36,15 +36,21 @@ namespace RelatoGraph
             get { return graph; }
             set
             {
-
+                graph = value;
             }
         }
 
         public Relation(List<int> set1, List<int> set2, List<int> graph)
         {
-            
+            Set1 = set1;
+            Set2 = set2;
+            Graph = graph;
         }
 
+        public List<int> UserInput(char split, String text)
+        {
+
+        }
 
     }
 }
