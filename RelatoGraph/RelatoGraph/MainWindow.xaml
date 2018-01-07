@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RelatoGraph"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+
+        Title="RelatoGraph" Height="600" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="center" Margin="0,0,0,0" VerticalAlignment="center" Width="75"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Button" HorizontalAlignment="center" Margin="178,274,358,275" VerticalAlignment="center" Width="76" Click="Button_Click" Grid.Column="1"/>
 
     </Grid>
 </Window>
