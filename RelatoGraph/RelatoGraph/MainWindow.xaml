@@ -7,7 +7,30 @@
         mc:Ignorable="d"
         Title="RelatoGraph" Height="350" Width="525">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="center" Margin="0,0,0,0" VerticalAlignment="center" Width="75"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <!--<RowDefinition Height="1*"/>-->
+            </Grid.RowDefinitions>
+        </Grid>
+        
+        <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBox Name="Input" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Height="20">Input</TextBox>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Confirm" Grid.Row="1" Width="75" Height="20"></Button>
+        </Grid>
+        
+        
 
     </Grid>
 </Window>
