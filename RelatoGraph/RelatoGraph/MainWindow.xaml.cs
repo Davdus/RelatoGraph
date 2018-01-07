@@ -24,5 +24,11 @@ namespace RelatoGraph
         {
             InitializeComponent();
         }
+
+        private void InputButton_Click(object sender, RoutedEventArgs e)
+        {
+            String setAstring = SetA.Text;
+            Label.Content = setAstring;
+        }
     }
 }

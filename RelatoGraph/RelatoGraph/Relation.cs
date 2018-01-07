@@ -49,7 +49,7 @@ namespace RelatoGraph
 
         public List<int> UserInput(char split, String text)
         {
-
+            
         }
 
     }

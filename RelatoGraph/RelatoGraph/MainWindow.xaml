@@ -26,11 +26,21 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBox Name="Input" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Height="20">Input</TextBox>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Confirm" Grid.Row="1" Width="75" Height="20"></Button>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="SetA" Grid.Column="0" Height="20">SetA</TextBox>
+                <TextBox Name="SetB" Grid.Column="1" Height="20">SetB</TextBox>
+                <TextBox Name="Relation" Grid.Column="2" Height="20">Relation</TextBox>
+            </Grid>
+            
+            <Button Name="InputButton" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Confirm" Grid.Row="1" Width="75" Height="20" Click="InputButton_Click"></Button>
         </Grid>
-        
-        
+
+        <Label Name="Label"></Label>
 
     </Grid>
 </Window>
