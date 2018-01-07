@@ -49,12 +49,14 @@ namespace RelatoGraph
 
         public List<int> UserInput(char split, String text)
         {
-            text.Split(split);
+            String[] chars = text.Split(split);
             List<int> content = new List<int>();
-            foreach (Char c in text)
-                content.Add(Int32.Parse(c.ToString()));
+            foreach (String s in chars)
+                content.Add(Int32.Parse(s));
             return content;
         }
+
+        //TO DO Printmethod for List (output)
 
     }
 }
