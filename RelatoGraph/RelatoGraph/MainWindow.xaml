@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="RelatoGraph" Height="350" Width="525">
     <Grid>
-        
+        <Button Content="Button" HorizontalAlignment="center" Margin="0,0,0,0" VerticalAlignment="center" Width="75"/>
+
     </Grid>
 </Window>
