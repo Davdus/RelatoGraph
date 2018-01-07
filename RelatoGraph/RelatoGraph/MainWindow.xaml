@@ -7,7 +7,7 @@
         mc:Ignorable="d"
 
         Title="RelatoGraph" Height="600" Width="800">
-    <Grid>
+    <Grid Name="TopGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="7*"/>
