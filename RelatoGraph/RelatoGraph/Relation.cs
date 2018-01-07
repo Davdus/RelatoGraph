@@ -47,10 +47,10 @@ namespace RelatoGraph
             Graph = graph;
         }
 
-        public List<int> UserInput(char split, String text)
-        {
+        //public List<int> UserInput(char split, String text)
+        //{
             
-        }
+        //}
 
     }
 }
