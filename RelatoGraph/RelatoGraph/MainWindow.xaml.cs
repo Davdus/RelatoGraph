@@ -20,6 +20,7 @@ namespace RelatoGraph
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static int counter = 1;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,8 +28,21 @@ namespace RelatoGraph
 
         private void InputButton_Click(object sender, RoutedEventArgs e)
         {
-            String setAstring = SetA.Text;
-            Label.Content = setAstring;
+            String aString = SetA.Text;
+            String bString = SetB.Text;
+            String rString = Relation.Text;
+            Label l = new Label();
+            l.Name = "Label" + counter;
+            l.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
+            counter++;
+
+            TopGrid.Children.Add(l);
+
+            SetA.Clear();
+            SetB.Clear();
+            Relation.Clear();
+
+            SetA.Focus();
         }
     }
 }

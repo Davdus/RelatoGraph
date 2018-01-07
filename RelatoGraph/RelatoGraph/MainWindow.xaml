@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RelatoGraph"
         mc:Ignorable="d"
         Title="RelatoGraph" Height="350" Width="525">
-    <Grid>
+    <Grid Name="TopGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="7*"/>
@@ -21,7 +21,7 @@
             </Grid.RowDefinitions>
         </Grid>
         
-        <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5">
+        <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Name="LowerGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
