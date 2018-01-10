@@ -9,54 +9,30 @@ namespace RelatoGraph
 {
     class Relation
     {
-        private List<int> set1;
-        private List<int> set2;
-        private List<int> graph;
 
-        public List<int> Set1
-        {
-            get { return set1; }
-            set
-            {
-                set1 = value;
-            }
-        }
 
-        public List<int> Set2
+        public Relation()
         {
-            get { return set2; }
-            set
-            {
-                set2 = value;
-            }
-        }
-
-        public List<int> Graph
-        {
-            get { return graph; }
-            set
-            {
-                graph = value;
-            }
-        }
-
-        public Relation(List<int> set1, List<int> set2, List<int> graph)
-        {
-            Set1 = set1;
-            Set2 = set2;
-            Graph = graph;
         }
 
         public List<int> UserInput(char split, String text)
         {
             String[] chars = text.Split(split);
-            List<int> content = new List<int>();
+            List<int> list = new List<int>();
             foreach (String s in chars)
-                content.Add(Int32.Parse(s));
-            return content;
+                list.Add(Int32.Parse(s));
+            return list;
         }
 
-        //TO DO Printmethod for List (output)
+        public String printList(List<int> list)
+        {
+            String output = "";
+            foreach (int i in list)
+            {
+                output += i;
+            }
+            return output.ToString();
+        }
 
     }
 }
