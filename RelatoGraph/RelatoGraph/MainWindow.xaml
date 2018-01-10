@@ -16,18 +16,15 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Column="0" Grid.Row="0">
-            <Grid.RowDefinitions>
-                <!--<RowDefinition Height="1*"/>-->
-            </Grid.RowDefinitions>
         </Grid>
         <ScrollViewer>
-            <StackPanel Grid.Column="0" Grid.Row="0" Name="TopStackPanel" Width="auto" Height="auto">
+            <StackPanel Name="TopStackPanel" Width="auto" Height="auto">
 
             </StackPanel>
         </ScrollViewer>
 
 
-        <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Name="LowerGrid">
+            <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Name="LowerGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
