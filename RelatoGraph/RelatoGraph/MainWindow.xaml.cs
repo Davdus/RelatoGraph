@@ -37,22 +37,24 @@ namespace RelatoGraph
 
 
 
+            // Label l = new Label();
+            // l.Content = r.printList(r.UserInput(',', aString));
+            // TopGrid.Children.Add(l);
+
+
+            
             Label l = new Label();
-            l.Content = r.printList(r.UserInput(',', aString));
-            TopGrid.Children.Add(l);
 
-
-
-            /*Label l = new Label();
+            
             l.Name = "Label" + counter;
             l.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
             counter++;
 
-            TopGrid.Children.Add(l);*/
+            TopStackPanel.Children.Add(l);
 
-            SetA.Clear();
-            SetB.Clear();
-            Relation.Clear();
+            //SetA.Clear();
+            //SetB.Clear();
+            //Relation.Clear();
 
 
 
