@@ -15,8 +15,7 @@
             <RowDefinition Height="18*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0" Grid.Row="0">
-        </Grid>
+
         <ScrollViewer>
             <StackPanel Name="TopStackPanel" Width="auto" Height="auto">
 
@@ -24,7 +23,7 @@
         </ScrollViewer>
 
 
-            <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Name="LowerGrid">
+        <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Name="LowerGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -39,11 +38,12 @@
                 <TextBox Name="SetB" Grid.Column="1" Height="20">SetB</TextBox>
                 <TextBox Name="Relation" Grid.Column="2" Height="20">Relation</TextBox>
             </Grid>
-            
+
             <Button Name="InputButton" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Confirm" Grid.Row="1" Width="75" Height="20" Click="InputButton_Click"></Button>
+            <Button Name="CollapseAll" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Collapse all" Grid.Row="1" Width="75" Height="20" Click="CollapseAll_Click"></Button>
         </Grid>
 
-        
+
 
     </Grid>
 </Window>

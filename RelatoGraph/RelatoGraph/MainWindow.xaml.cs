@@ -93,7 +93,6 @@ namespace RelatoGraph
 
             if (sender is CustomButton)
             {
-                Label l;
                 string name = ((CustomButton)sender).Name;
                 String counter = "" + name.Trim(new char[] { 'R', 'e', 'l', 'B', 't', 'n' });
                 foreach (Object obj in TopStackPanel.Children)
@@ -112,6 +111,17 @@ namespace RelatoGraph
                             }
                         }
                     }
+                }
+            }
+        }
+
+        private void CollapseAll_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Object obj in TopStackPanel.Children)
+            {
+                if (obj is Label)
+                {
+                    ((Label)obj).Visibility = Visibility.Collapsed;
                 }
             }
         }
