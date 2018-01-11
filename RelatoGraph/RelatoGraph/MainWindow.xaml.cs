@@ -31,15 +31,24 @@ namespace RelatoGraph
             String aString = SetA.Text;
             String bString = SetB.Text;
             String rString = Relation.Text;
-            Relation r = new Relation();
 
-            CustomButton b = new CustomButton(aString, bString, rString);
-            b.Name = "RelBtn" + counter;
-            b.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
+            CustomButton btn = new CustomButton(aString, bString, rString);
+            btn.Name = "RelBtn" + counter;
+            btn.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
+            btn.Click += RelButton_Click;
+            TopStackPanel.Children.Add(btn);
+
+            String wholeRelation = aString + "|" + bString + "|" + rString;
+            Label l = new Label();
+            l.Name = "L" + counter;
+            l.Visibility = Visibility.Collapsed;
+            l.HorizontalAlignment = HorizontalAlignment.Center;
+            l.Content = wholeRelation;
+            
+            TopStackPanel.Children.Add(l);
+
             counter++;
-            b.Click += RelButton_Click;
-            TopStackPanel.Children.Add(b);
-
+            
             //SetA.Clear();
             //SetB.Clear();
             //Relation.Clear();
@@ -80,22 +89,33 @@ namespace RelatoGraph
 
         private void RelButton_Click(object sender, RoutedEventArgs e)
         {
+            //Set label visibility to not hidden
             Relation rel = new Relation();
 
             if (sender is CustomButton)
             {
-                String a = ((CustomButton)sender).SetA;
-                String b = ((CustomButton)sender).SetB;
-                String r = ((CustomButton)sender).Relation;
-
-                String wholeRelation = a + "|" + b + "|" + r;
-                Label l = new Label();
-                l.Content = wholeRelation;
-                TopStackPanel.Children.Add(l);
-
-                //rel.drawRelation(wholeRelation);
+                Label l;
+                string name = ((CustomButton)sender).Name;
+                Char[] localCharArray = name.ToCharArray();
+                String counter = "" + localCharArray[6];
+                foreach (Object obj in TopStackPanel.Children)
+                {
+                    if (obj is Label)
+                    {
+                        if (((Label)obj).Name.Equals("L" + counter))
+                        {
+                            if (((Label)obj).Visibility == Visibility.Collapsed)
+                            {
+                                ((Label)obj).Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                ((Label)obj).Visibility = Visibility.Collapsed;
+                            }
+                        }
+                    }
+                }
             }
-            
         }
     }
 }
