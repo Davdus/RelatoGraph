@@ -31,23 +31,21 @@ namespace RelatoGraph
             String aString = SetA.Text;
             String bString = SetB.Text;
             String rString = Relation.Text;
-
             Relation r = new Relation();
-            
-            Label l = new Label();
 
-            l.Name = "Label" + counter;
-            l.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
+            CustomButton b = new CustomButton(aString, bString, rString);
+            b.Name = "RelBtn" + counter;
+            b.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
             counter++;
-            TopStackPanel.Children.Add(l);
+            b.Click += RelButton_Click;
+            TopStackPanel.Children.Add(b);
 
             //SetA.Clear();
             //SetB.Clear();
             //Relation.Clear();
-
             SetA.Focus();
         }
-
+        /*
         private void tbGotKeyboardFocus(object sender,KeyboardFocusChangedEventArgs e)
         {
             if (sender is TextBox)
@@ -71,7 +69,7 @@ namespace RelatoGraph
                 }
             }
         }
-
+        */
         /*
         TextBox tb = new TextBox();
         tb.Foreground = Brushes.Gray;
@@ -79,5 +77,22 @@ namespace RelatoGraph
         tb.GotKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_GotKeyboardFocus);
         tb.LostKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_LostKeyboardFocus);
         */
+
+        private void RelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Relation rel = new Relation();
+
+            if (sender is CustomButton)
+            {
+                String a = ((CustomButton)sender).SetA;
+                String b = ((CustomButton)sender).SetB;
+                String r = ((CustomButton)sender).Relation;
+
+                Label l = new Label();
+                l.Content = a + b + r;
+                TopStackPanel.Children.Add(l);
+            }
+            
+        }
     }
 }
