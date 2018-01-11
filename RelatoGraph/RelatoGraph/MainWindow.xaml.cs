@@ -93,7 +93,7 @@ namespace RelatoGraph
                 l.Content = wholeRelation;
                 TopStackPanel.Children.Add(l);
 
-                rel.drawRelation(wholeRelation);
+                //rel.drawRelation(wholeRelation);
             }
             
         }
