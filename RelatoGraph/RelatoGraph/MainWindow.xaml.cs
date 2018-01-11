@@ -89,15 +89,13 @@ namespace RelatoGraph
 
         private void RelButton_Click(object sender, RoutedEventArgs e)
         {
-            //Set label visibility to not hidden
             Relation rel = new Relation();
 
             if (sender is CustomButton)
             {
                 Label l;
                 string name = ((CustomButton)sender).Name;
-                Char[] localCharArray = name.ToCharArray();
-                String counter = "" + localCharArray[6];
+                String counter = "" + name.Trim(new char[] { 'R', 'e', 'l', 'B', 't', 'n' });
                 foreach (Object obj in TopStackPanel.Children)
                 {
                     if (obj is Label)
