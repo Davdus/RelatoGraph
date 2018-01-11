@@ -9,8 +9,11 @@ namespace RelatoGraph
 {
     class Relation
     {
-
-
+        /*
+         * A relation is the connection of two sets
+         * by binding numbers of one set to numbers of the opposite set.
+         */
+        
         public Relation()
         {
         }
