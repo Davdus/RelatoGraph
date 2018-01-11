@@ -31,20 +31,71 @@ namespace RelatoGraph
             String aString = SetA.Text;
             String bString = SetB.Text;
             String rString = Relation.Text;
-            Label l = new Label();
-            l.Name = "Label" + counter;
-            l.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
+            Relation r = new Relation();
+
+            CustomButton b = new CustomButton(aString, bString, rString);
+            b.Name = "RelBtn" + counter;
+            b.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
             counter++;
+            b.Click += RelButton_Click;
+            TopStackPanel.Children.Add(b);
 
-            TopGrid.Children.Add(l);
-
-            SetA.Clear();
-            SetB.Clear();
-            Relation.Clear();
-
-
-
+            //SetA.Clear();
+            //SetB.Clear();
+            //Relation.Clear();
             SetA.Focus();
+        }
+        /*
+        private void tbGotKeyboardFocus(object sender,KeyboardFocusChangedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                if (((TextBox)sender).Foreground == Brushes.Gray)
+                {
+                    ((TextBox)sender).Text = "";
+                    ((TextBox)sender).Foreground = Brushes.Black;
+                }
+            }
+        }
+
+        private void tbLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e, String input)
+        {
+            if(sender is TextBox)
+            {
+                if (((TextBox)sender).Foreground == Brushes.Black)
+                {
+                    ((TextBox)sender).Text = input;
+                    ((TextBox)sender).Foreground = Brushes.Gray;
+                }
+            }
+        }
+        */
+        /*
+        TextBox tb = new TextBox();
+        tb.Foreground = Brushes.Gray;
+        tb.Text = "Text";
+        tb.GotKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_GotKeyboardFocus);
+        tb.LostKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_LostKeyboardFocus);
+        */
+
+        private void RelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Relation rel = new Relation();
+
+            if (sender is CustomButton)
+            {
+                String a = ((CustomButton)sender).SetA;
+                String b = ((CustomButton)sender).SetB;
+                String r = ((CustomButton)sender).Relation;
+
+                String wholeRelation = a + "|" + b + "|" + r;
+                Label l = new Label();
+                l.Content = wholeRelation;
+                TopStackPanel.Children.Add(l);
+
+                //rel.drawRelation(wholeRelation);
+            }
+            
         }
     }
 }

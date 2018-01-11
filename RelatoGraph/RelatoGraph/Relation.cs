@@ -34,5 +34,10 @@ namespace RelatoGraph
             return output.ToString();
         }
 
+        public void drawRelation()
+        {
+            //calls UserInput
+            //draw relation class
+        }
     }
 }

@@ -43,7 +43,7 @@
             <Button Name="InputButton" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Confirm" Grid.Row="1" Width="75" Height="20" Click="InputButton_Click"></Button>
         </Grid>
 
-        <Label Name="Label"></Label>
+        
 
     </Grid>
 </Window>
