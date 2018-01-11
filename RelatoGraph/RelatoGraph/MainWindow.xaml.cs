@@ -88,9 +88,12 @@ namespace RelatoGraph
                 String b = ((CustomButton)sender).SetB;
                 String r = ((CustomButton)sender).Relation;
 
+                String wholeRelation = a + "|" + b + "|" + r;
                 Label l = new Label();
-                l.Content = a + b + r;
+                l.Content = wholeRelation;
                 TopStackPanel.Children.Add(l);
+
+                rel.drawRelation(wholeRelation);
             }
             
         }
