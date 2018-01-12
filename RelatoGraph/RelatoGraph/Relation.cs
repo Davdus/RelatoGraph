@@ -95,31 +95,61 @@ namespace RelatoGraph
             intList = charArray.Select(x => Int32.Parse(x)).ToList();
             return intList;
         }
-        
 
-        /*
-         * Jedes Element a aus der Quellmenge hat min. einen Partner aus der Zielmenge
-         * false
-         */
         public bool isLefttotal()
         {
-            return false;
-        }
-        /*
-         * A = {1,2,3}
-         * B = {3,5,6}
-         * Gr = {(1,4),(1,5),(1,6),(2,5),(2,6)}
-         */
+            int count = splitSetA().Count;
+            int counter = 0;
 
-        /*
-         * Jedes Element b aus der Zielmenge hat min.  einen Partner a aus der Quellmenge
-         * false
-         */
+            foreach (int i in splitSetA())
+            {
+                foreach (List<int> list in splitRelation())
+                {
+                    int position1 = list.ElementAt(0);
+                    if (position1 == i)
+                    {
+                        counter++;
+                        break;
+                    }
+                }
+            }
+            if (counter >= count)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool isRighttotal()
         {
-            //is?
-            return false;
+            int count = splitSetB().Count;
+            int counter = 0;
+
+            foreach (int i in splitSetB())
+            {
+                foreach (List<int> list in splitRelation())
+                {
+                    int position2 = list.ElementAt(1);
+                    if (position2 == i)
+                    {
+                        counter++;
+                        break;
+                    }
+                }
+            }
+            if (counter >= count)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+        
         public bool isBitotal()
         {
             if (isLefttotal() && isRighttotal())

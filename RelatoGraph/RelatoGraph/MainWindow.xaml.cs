@@ -63,7 +63,7 @@ namespace RelatoGraph
             l4.Name = "bitotal";
             l4.Content = "Bitotal: " + relation.isBitotal();
             l5.Name = "leftunique";
-            l5.Content = "Leftunique: " + relation.isLefttotal();
+            l5.Content = "Leftunique: " + relation.isLeftunique();
             l6.Name = "rightunique";
             l6.Content = "Rightunique: " + relation.isRightunique();
             //What is "Eineindeutig" in englisch. Insert in l7.Name and l7.Content
