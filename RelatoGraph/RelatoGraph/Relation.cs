@@ -159,24 +159,74 @@ namespace RelatoGraph
             return false;
         }
 
-        /*
-         * Jedes Element b aus der Zielmenge hat max. einen Partner a aus der Quellmenge
-         * 
-         */
         public bool isLeftunique()
         {
-            //is?
-            return false;
+            int count = splitSetA().Count;
+            int counter = 0;
+            int multiple = 0;
+
+            foreach (int i in splitSetA())
+            {
+                int localMultiple = 0;
+                foreach (List<int> list in splitRelation())
+                {
+                    int position1 = list.ElementAt(0);
+                    if (position1 == i)
+                    {
+                        counter++;
+                        localMultiple++;
+                        //break;
+                    }
+                    if (localMultiple >= 2)
+                    {
+                        multiple = localMultiple;
+                    }
+                }
+            }
+            if (counter <= count && multiple < 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        /*
-         * Jedes Element a aus der Quellmenge hat max. einen Partner b aus der Zielmenge
-         */
         public bool isRightunique()
         {
-            //is?
-            return false;
+            int count = splitSetB().Count;
+            int counter = 0;
+            int multiple = 0;
+
+            foreach (int i in splitSetB())
+            {
+                int localMultiple = 0;
+                foreach (List<int> list in splitRelation())
+                {
+                    int position2 = list.ElementAt(1);
+                    if (position2 == i)
+                    {
+                        counter++;
+                        localMultiple++;
+                        //break;
+                    }
+                    if (localMultiple >= 2)
+                    {
+                        multiple = localMultiple;
+                    }
+                }
+            }
+            if (counter <= count && multiple < 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
         public bool isOneunique()
         {
             if (isLeftunique() && isRightunique())

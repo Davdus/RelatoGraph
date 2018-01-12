@@ -70,9 +70,6 @@ namespace RelatoGraph
             l7.Name = "oneunique";
             l7.Content = "Oneunique: " + relation.isOneunique();
 
-            Label testLabel = new Label();
-            TopStackPanel.Children.Add(testLabel);
-
 
 
 
@@ -87,9 +84,9 @@ namespace RelatoGraph
 
             counter++;
             
-            //SetA.Clear();
-            //SetB.Clear();
-            //Relation.Clear();
+            SetA.Clear();
+            SetB.Clear();
+            Relation.Clear();
             SetA.Focus();
         }
         /*
