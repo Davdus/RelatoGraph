@@ -40,98 +40,80 @@ namespace RelatoGraph
             String output = "";
             foreach (int i in list)
             {
-                output += i;
+                output += i + ",";
+            }
+            output = output.Remove(output.Length - 1);
+            return output.ToString() + ";";
+        }
+
+        public String printDoubleList(List<List<int>> list)
+        {
+            String output = "";
+            foreach (List<int> i in list)
+            {
+                output += printList(i);
             }
             return output.ToString();
         }
 
-        public String returnList(List<char> list)
+        public List<List<int>> splitRelation()
         {
-            String output = "";
-            foreach (char c in list)
-            {
-                output += c;
-            }
-            return output;
-        }
-
-        //   "1,2;3,4"
-        public String splitRelationChar()
-        {
+            char colon = ',';
+            char semicolon = ';';
             String relation = RelationValue;
             int length = relation.Length;
-            List<List<char>> charList = new List<List<char>>();
-            List<char> innerList;
-            for (int i = 0; i < length; i++)
+            List<List<int>> intList = new List<List<int>>();
+            List<int> innerList;
+
+            String[] charArray = relation.Split(semicolon);
+            for (int i = 0; i < charArray.Length; i++)
             {
-                innerList = new List<char>();
-                for (int x = 0; x < 3; x++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        //even
-                        innerList.Add(relation[i]);
-                        i++;
-                    }
-                    else
-                    {
-                        //odd
-                        i++;
-                    }
-                }
-                charList.Add(innerList);
+                String[] innercharArray = charArray[i].Split(colon);
+                innerList = innercharArray.Select(x => Int32.Parse(x)).ToList();
+                intList.Add(innerList);
             }
-            return printDoubleList(charList).ToString();
+
+            return intList;
         }
 
-
-
-        public String printDoubleList(List<List<char>> list)
+        public List<int> splitSetA()
         {
-            String output = "";
-            foreach (List<char> c in list)
-            {
-                output += returnList(c);
-            }
-            return output;
+            char colon = ',';
+            String setA = SetA;
+            String[] charArray = setA.Split(colon);
+            List<int> intList = new List<int>();
+            intList = charArray.Select(x => Int32.Parse(x)).ToList();
+            return intList;
         }
 
-        /*Still leave this be
-        public void drawRelation(String wholeRelation)
+        public List<int> splitSetB()
         {
-            String[] splitThree = wholeRelation.Split('|');
-
-            String setA = splitThree[0];
-            String setB = splitThree[1];
-            String relationString = splitThree[2];
-
-            String[] splitSetA = setA.Split(',');
-            String[] splitSetB = setB.Split(',');
-
-            String[] splitRelationStringBigger = relationString.Split(';');
-            String[] splitRelationStringSmaller1 = splitRelationStringBigger[0].Split(',');
-            String[] splitRelationStringSmaller2 = splitRelationStringBigger[1].Split(',');
-
-            List<String> list1 = new List<String>();
-            list1.Add(setA);
-            List<String> list2 = new List<String>();
-            list2.Add(setB);
-            List<List<String>> list3 = new List<List<String>>();
-            //foreach(String s in)
-        }*/
-
+            char colon = ',';
+            String setB = SetB;
+            String[] charArray = setB.Split(colon);
+            List<int> intList = new List<int>();
+            intList = charArray.Select(x => Int32.Parse(x)).ToList();
+            return intList;
+        }
+        
 
         /*
-         * Jedes Element a aus der Quellmenge hat min. einen Partner  aus der Zielmenge
+         * Jedes Element a aus der Quellmenge hat min. einen Partner aus der Zielmenge
+         * false
          */
         public bool isLefttotal()
         {
-            //is?
             return false;
         }
+        /*
+         * A = {1,2,3}
+         * B = {3,5,6}
+         * Gr = {(1,4),(1,5),(1,6),(2,5),(2,6)}
+         */
 
         /*
          * Jedes Element b aus der Zielmenge hat min.  einen Partner a aus der Quellmenge
+         * false
          */
         public bool isRighttotal()
         {
@@ -149,6 +131,7 @@ namespace RelatoGraph
 
         /*
          * Jedes Element b aus der Zielmenge hat max. einen Partner a aus der Quellmenge
+         * 
          */
         public bool isLeftunique()
         {

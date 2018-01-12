@@ -71,7 +71,6 @@ namespace RelatoGraph
             l7.Content = "Oneunique: " + relation.isOneunique();
 
             Label testLabel = new Label();
-            testLabel.Content = relation.splitRelationChar().ToString();
             TopStackPanel.Children.Add(testLabel);
 
 
