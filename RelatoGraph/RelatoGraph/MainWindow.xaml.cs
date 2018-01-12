@@ -33,6 +33,9 @@ namespace RelatoGraph
             String rString = Relation.Text;
             Relation relation = new Relation(aString, bString, rString);
 
+            
+
+
             CustomButton btn = new CustomButton(aString, bString, rString);
             btn.Name = "RelBtn" + counter;
             btn.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, {" + rString + "})");
@@ -67,7 +70,10 @@ namespace RelatoGraph
             l7.Name = "oneunique";
             l7.Content = "Oneunique: " + relation.isOneunique();
 
-            
+            Label testLabel = new Label();
+            testLabel.Content = relation.splitRelationChar().ToString();
+            TopStackPanel.Children.Add(testLabel);
+
 
 
 

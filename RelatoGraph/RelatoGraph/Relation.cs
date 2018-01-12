@@ -12,6 +12,7 @@ namespace RelatoGraph
         public String SetA { get; set; }
         public String SetB { get; set; }
         public String RelationValue { get; set; }
+
         /*
          * A relation is the connection of two sets
          * by binding numbers of one set to numbers of the opposite set.
@@ -43,7 +44,58 @@ namespace RelatoGraph
             }
             return output.ToString();
         }
-        
+
+        public String returnList(List<char> list)
+        {
+            String output = "";
+            foreach (char c in list)
+            {
+                output += c;
+            }
+            return output;
+        }
+
+        //   "1,2;3,4"
+        public String splitRelationChar()
+        {
+            String relation = RelationValue;
+            int length = relation.Length;
+            List<List<char>> charList = new List<List<char>>();
+            List<char> innerList;
+            for (int i = 0; i < length; i++)
+            {
+                innerList = new List<char>();
+                for (int x = 0; x < 3; x++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        //even
+                        innerList.Add(relation[i]);
+                        i++;
+                    }
+                    else
+                    {
+                        //odd
+                        i++;
+                    }
+                }
+                charList.Add(innerList);
+            }
+            return printDoubleList(charList).ToString();
+        }
+
+
+
+        public String printDoubleList(List<List<char>> list)
+        {
+            String output = "";
+            foreach (List<char> c in list)
+            {
+                output += returnList(c);
+            }
+            return output;
+        }
+
         /*Still leave this be
         public void drawRelation(String wholeRelation)
         {
@@ -69,11 +121,18 @@ namespace RelatoGraph
         }*/
 
 
+        /*
+         * Jedes Element a aus der Quellmenge hat min. einen Partner  aus der Zielmenge
+         */
         public bool isLefttotal()
         {
             //is?
             return false;
         }
+
+        /*
+         * Jedes Element b aus der Zielmenge hat min.  einen Partner a aus der Quellmenge
+         */
         public bool isRighttotal()
         {
             //is?
@@ -87,11 +146,19 @@ namespace RelatoGraph
             }
             return false;
         }
+
+        /*
+         * Jedes Element b aus der Zielmenge hat max. einen Partner a aus der Quellmenge
+         */
         public bool isLeftunique()
         {
             //is?
             return false;
         }
+
+        /*
+         * Jedes Element a aus der Quellmenge hat max. einen Partner b aus der Zielmenge
+         */
         public bool isRightunique()
         {
             //is?
