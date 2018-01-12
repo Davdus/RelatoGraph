@@ -31,21 +31,54 @@ namespace RelatoGraph
             String aString = SetA.Text;
             String bString = SetB.Text;
             String rString = Relation.Text;
+            Relation relation = new Relation(aString, bString, rString);
 
             CustomButton btn = new CustomButton(aString, bString, rString);
             btn.Name = "RelBtn" + counter;
-            btn.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, " + rString + ")");
+            btn.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, {" + rString + "})");
             btn.Click += RelButton_Click;
             TopStackPanel.Children.Add(btn);
 
-            String wholeRelation = aString + "|" + bString + "|" + rString;
-            Label l = new Label();
-            l.Name = "L" + counter;
-            l.Visibility = Visibility.Collapsed;
-            l.HorizontalAlignment = HorizontalAlignment.Center;
-            l.Content = wholeRelation;
+            StackPanel stack = new StackPanel();
+            stack.Name = "S" + counter;
+            stack.Visibility = Visibility.Collapsed;
+            stack.HorizontalAlignment = HorizontalAlignment.Center;
+
+            Label l1 = new Label();
+            Label l2 = new Label();
+            Label l3 = new Label();
+            Label l4 = new Label();
+            Label l5 = new Label();
+            Label l6 = new Label();
+            Label l7 = new Label();
+            l1.Name = "wholeRel" + counter;
+            l1.Content = aString + "|" + bString + "|" + rString;
+            l2.Name = "lefttotal" + counter;
+            l2.Content = "Lefttotal: " + relation.isLefttotal();
+            l3.Name = "righttotal";
+            l3.Content = "Righttotal: " + relation.isRighttotal();
+            l4.Name = "bitotal";
+            l4.Content = "Bitotal: " + relation.isBitotal();
+            l5.Name = "leftunique";
+            l5.Content = "Leftunique: " + relation.isLefttotal();
+            l6.Name = "rightunique";
+            l6.Content = "Rightunique: " + relation.isRightunique();
+            //What is "Eineindeutig" in englisch. Insert in l7.Name and l7.Content
+            l7.Name = "oneunique";
+            l7.Content = "Oneunique: " + relation.isOneunique();
+
             
-            TopStackPanel.Children.Add(l);
+
+
+
+            stack.Children.Add(l1);
+            stack.Children.Add(l2);
+            stack.Children.Add(l3);
+            stack.Children.Add(l4);
+            stack.Children.Add(l5);
+            stack.Children.Add(l6);
+            stack.Children.Add(l7);
+            TopStackPanel.Children.Add(stack);
 
             counter++;
             
@@ -89,25 +122,23 @@ namespace RelatoGraph
 
         private void RelButton_Click(object sender, RoutedEventArgs e)
         {
-            Relation rel = new Relation();
-
             if (sender is CustomButton)
             {
                 string name = ((CustomButton)sender).Name;
                 String counter = "" + name.Trim(new char[] { 'R', 'e', 'l', 'B', 't', 'n' });
                 foreach (Object obj in TopStackPanel.Children)
                 {
-                    if (obj is Label)
+                    if (obj is StackPanel)
                     {
-                        if (((Label)obj).Name.Equals("L" + counter))
+                        if (((StackPanel)obj).Name.Equals("S" + counter))
                         {
-                            if (((Label)obj).Visibility == Visibility.Collapsed)
+                            if (((StackPanel)obj).Visibility == Visibility.Collapsed)
                             {
-                                ((Label)obj).Visibility = Visibility.Visible;
+                                ((StackPanel)obj).Visibility = Visibility.Visible;
                             }
                             else
                             {
-                                ((Label)obj).Visibility = Visibility.Collapsed;
+                                ((StackPanel)obj).Visibility = Visibility.Collapsed;
                             }
                         }
                     }
@@ -119,9 +150,9 @@ namespace RelatoGraph
         {
             foreach (Object obj in TopStackPanel.Children)
             {
-                if (obj is Label)
+                if (obj is StackPanel)
                 {
-                    ((Label)obj).Visibility = Visibility.Collapsed;
+                    ((StackPanel)obj).Visibility = Visibility.Collapsed;
                 }
             }
         }

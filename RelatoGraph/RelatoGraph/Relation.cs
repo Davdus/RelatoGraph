@@ -9,13 +9,19 @@ namespace RelatoGraph
 {
     class Relation
     {
+        public String SetA { get; set; }
+        public String SetB { get; set; }
+        public String RelationValue { get; set; }
         /*
          * A relation is the connection of two sets
          * by binding numbers of one set to numbers of the opposite set.
          */
-        
-        public Relation()
+
+        public Relation(String a, String b, String r)
         {
+            SetA = a;
+            SetB = b;
+            RelationValue = r;
         }
 
         public List<String> UserInput(char split, String text)
@@ -60,13 +66,61 @@ namespace RelatoGraph
             list2.Add(setB);
             List<List<String>> list3 = new List<List<String>>();
             //foreach(String s in)
-
-            
-
-            
-
-
-        
         }*/
+
+
+        public bool isLefttotal()
+        {
+            //is?
+            return false;
+        }
+        public bool isRighttotal()
+        {
+            //is?
+            return false;
+        }
+        public bool isBitotal()
+        {
+            if (isLefttotal() && isRighttotal())
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool isLeftunique()
+        {
+            //is?
+            return false;
+        }
+        public bool isRightunique()
+        {
+            //is?
+            return false;
+        }
+        public bool isOneunique()
+        {
+            if (isLeftunique() && isRightunique())
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
