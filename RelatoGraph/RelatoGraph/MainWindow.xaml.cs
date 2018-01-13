@@ -21,6 +21,9 @@ namespace RelatoGraph
     public partial class MainWindow : Window
     {
         private static int counter = 1;
+        private String defaultTextA = "x1,x2,...";
+        private String defaultTextB = "y1,y2,...";
+        private String defaultTextR = "x1,y1;x2,y2;...";
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +35,11 @@ namespace RelatoGraph
             String bString = SetB.Text;
             String rString = Relation.Text;
             Relation relation = new Relation(aString, bString, rString);
-
+            //TextBox tb = new TextBox();
+            //tb.Foreground = Brushes.Gray;
+            //tb.Text = "Text";
+            //tb.GotKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_GotKeyboardFocus);
+            //tb.LostKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_LostKeyboardFocus);
             
 
 
@@ -84,17 +91,14 @@ namespace RelatoGraph
 
             counter++;
             
-            SetA.Clear();
-            SetB.Clear();
-            Relation.Clear();
             SetA.Focus();
         }
-        /*
+        
         private void tbGotKeyboardFocus(object sender,KeyboardFocusChangedEventArgs e)
         {
             if (sender is TextBox)
             {
-                if (((TextBox)sender).Foreground == Brushes.Gray)
+                if (((TextBox)sender).Foreground == Brushes.LightGray)
                 {
                     ((TextBox)sender).Text = "";
                     ((TextBox)sender).Foreground = Brushes.Black;
@@ -102,25 +106,42 @@ namespace RelatoGraph
             }
         }
 
-        private void tbLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e, String input)
+        private void tbLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             if(sender is TextBox)
             {
                 if (((TextBox)sender).Foreground == Brushes.Black)
                 {
-                    ((TextBox)sender).Text = input;
-                    ((TextBox)sender).Foreground = Brushes.Gray;
+                    if (((TextBox)sender).Name.Equals(SetA.Name))
+                    {
+                        if (((TextBox)sender).Text.Equals(""))
+                        {
+                            ((TextBox)sender).Text = defaultTextA;
+                            ((TextBox)sender).Foreground = Brushes.LightGray;
+                        }
+                    }else if (((TextBox)sender).Name.Equals(SetB.Name))
+                    {
+                        if (((TextBox)sender).Text.Equals(""))
+                        {
+                            ((TextBox)sender).Text = defaultTextB;
+                            ((TextBox)sender).Foreground = Brushes.LightGray;
+                        }
+                    }
+                    else if (((TextBox)sender).Name.Equals(Relation.Name))
+                    {
+                        if (((TextBox)sender).Text.Equals(""))
+                        {
+                            ((TextBox)sender).Text = defaultTextR;
+                            ((TextBox)sender).Foreground = Brushes.LightGray;
+                        }
+                    }
                 }
             }
         }
-        */
-        /*
-        TextBox tb = new TextBox();
-        tb.Foreground = Brushes.Gray;
-        tb.Text = "Text";
-        tb.GotKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_GotKeyboardFocus);
-        tb.LostKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_LostKeyboardFocus);
-        */
+        
+        
+        
+        
 
         private void RelButton_Click(object sender, RoutedEventArgs e)
         {
