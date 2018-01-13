@@ -35,13 +35,6 @@ namespace RelatoGraph
             String bString = SetB.Text;
             String rString = Relation.Text;
             Relation relation = new Relation(aString, bString, rString);
-            //TextBox tb = new TextBox();
-            //tb.Foreground = Brushes.Gray;
-            //tb.Text = "Text";
-            //tb.GotKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_GotKeyboardFocus);
-            //tb.LostKeyboardFocus += new KeyboardFocusChangedEventHandler(tb_LostKeyboardFocus);
-            
-
 
             CustomButton btn = new CustomButton(aString, bString, rString);
             btn.Name = "RelBtn" + counter;
@@ -90,7 +83,16 @@ namespace RelatoGraph
             TopStackPanel.Children.Add(stack);
 
             counter++;
-            
+
+            SetA.Foreground = Brushes.LightGray;
+            SetA.Text = defaultTextA;
+
+            SetB.Foreground = Brushes.LightGray;
+            SetB.Text = defaultTextB;
+
+            Relation.Foreground = Brushes.LightGray;
+            Relation.Text = defaultTextR;
+
             SetA.Focus();
         }
         

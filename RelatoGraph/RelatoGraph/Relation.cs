@@ -13,11 +13,6 @@ namespace RelatoGraph
         public String SetB { get; set; }
         public String RelationValue { get; set; }
 
-        /*
-         * A relation is the connection of two sets
-         * by binding numbers of one set to numbers of the opposite set.
-         */
-
         public Relation(String a, String b, String r)
         {
             SetA = a;
@@ -175,7 +170,6 @@ namespace RelatoGraph
                     {
                         counter++;
                         localMultiple++;
-                        //break;
                     }
                     if (localMultiple >= 2)
                     {
@@ -209,7 +203,6 @@ namespace RelatoGraph
                     {
                         counter++;
                         localMultiple++;
-                        //break;
                     }
                     if (localMultiple >= 2)
                     {
