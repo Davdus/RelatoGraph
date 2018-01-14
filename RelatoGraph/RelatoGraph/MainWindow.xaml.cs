@@ -29,71 +29,79 @@ namespace RelatoGraph
             InitializeComponent();
         }
 
-        private void InputButton_Click(object sender, RoutedEventArgs e)
+        private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            String aString = SetA.Text;
-            String bString = SetB.Text;
-            String rString = Relation.Text;
-            Relation relation = new Relation(aString, bString, rString);
+            try
+            {
+                String aString = SetA.Text;
+                String bString = SetB.Text;
+                String rString = Relation.Text;
 
-            CustomButton btn = new CustomButton(aString, bString, rString);
-            btn.Name = "RelBtn" + counter;
-            btn.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, {" + rString + "})");
-            btn.Click += RelButton_Click;
-            TopStackPanel.Children.Add(btn);
+                Relation relation = new Relation(aString, bString, rString);
 
-            StackPanel stack = new StackPanel();
-            stack.Name = "S" + counter;
-            stack.Visibility = Visibility.Collapsed;
-            stack.HorizontalAlignment = HorizontalAlignment.Center;
+                Label l1 = new Label();
+                Label l2 = new Label();
+                Label l3 = new Label();
+                Label l4 = new Label();
+                Label l5 = new Label();
+                Label l6 = new Label();
+                Label l7 = new Label();
+                l1.Name = "wholeRel" + counter;
+                l1.Content = aString + "|" + bString + "|" + rString;
+                l2.Name = "lefttotal" + counter;
+                l2.Content = "Lefttotal: " + relation.isLefttotal();
+                l3.Name = "righttotal";
+                l3.Content = "Righttotal: " + relation.isRighttotal();
+                l4.Name = "bitotal";
+                l4.Content = "Bitotal: " + relation.isBitotal();
+                l5.Name = "leftunique";
+                l5.Content = "Leftunique: " + relation.isLeftunique();
+                l6.Name = "rightunique";
+                l6.Content = "Rightunique: " + relation.isRightunique();
+                //What is "Eineindeutig" in englisch. Insert in l7.Name and l7.Content
+                l7.Name = "oneunique";
+                l7.Content = "Oneunique: " + relation.isOneunique();
 
-            Label l1 = new Label();
-            Label l2 = new Label();
-            Label l3 = new Label();
-            Label l4 = new Label();
-            Label l5 = new Label();
-            Label l6 = new Label();
-            Label l7 = new Label();
-            l1.Name = "wholeRel" + counter;
-            l1.Content = aString + "|" + bString + "|" + rString;
-            l2.Name = "lefttotal" + counter;
-            l2.Content = "Lefttotal: " + relation.isLefttotal();
-            l3.Name = "righttotal";
-            l3.Content = "Righttotal: " + relation.isRighttotal();
-            l4.Name = "bitotal";
-            l4.Content = "Bitotal: " + relation.isBitotal();
-            l5.Name = "leftunique";
-            l5.Content = "Leftunique: " + relation.isLeftunique();
-            l6.Name = "rightunique";
-            l6.Content = "Rightunique: " + relation.isRightunique();
-            //What is "Eineindeutig" in englisch. Insert in l7.Name and l7.Content
-            l7.Name = "oneunique";
-            l7.Content = "Oneunique: " + relation.isOneunique();
+                CustomButton btn = new CustomButton(aString, bString, rString);
+                btn.Name = "RelBtn" + counter;
+                btn.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, {" + rString + "})");
+                btn.Click += RelButton_Click;
+                TopStackPanel.Children.Add(btn);
+
+                StackPanel stack = new StackPanel();
+                stack.Name = "S" + counter;
+                stack.Visibility = Visibility.Collapsed;
+                stack.HorizontalAlignment = HorizontalAlignment.Center;
 
 
+                stack.Children.Add(l1);
+                stack.Children.Add(l2);
+                stack.Children.Add(l3);
+                stack.Children.Add(l4);
+                stack.Children.Add(l5);
+                stack.Children.Add(l6);
+                stack.Children.Add(l7);
+                TopStackPanel.Children.Add(stack);
 
+                counter++;
 
-            stack.Children.Add(l1);
-            stack.Children.Add(l2);
-            stack.Children.Add(l3);
-            stack.Children.Add(l4);
-            stack.Children.Add(l5);
-            stack.Children.Add(l6);
-            stack.Children.Add(l7);
-            TopStackPanel.Children.Add(stack);
+                SetA.Foreground = Brushes.LightGray;
+                SetA.Text = defaultTextA;
 
-            counter++;
+                SetB.Foreground = Brushes.LightGray;
+                SetB.Text = defaultTextB;
 
-            SetA.Foreground = Brushes.LightGray;
-            SetA.Text = defaultTextA;
+                Relation.Foreground = Brushes.LightGray;
+                Relation.Text = defaultTextR;
 
-            SetB.Foreground = Brushes.LightGray;
-            SetB.Text = defaultTextB;
+                SetA.Focus();
+            }
+            catch (InputNotIntException)
+            {
+                MessageBox.Show("You need to enter numbers only!");
+            }
+            
 
-            Relation.Foreground = Brushes.LightGray;
-            Relation.Text = defaultTextR;
-
-            SetA.Focus();
         }
         
         private void tbGotKeyboardFocus(object sender,KeyboardFocusChangedEventArgs e)
@@ -141,9 +149,11 @@ namespace RelatoGraph
             }
         }
         
-        
-        
-        
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            //perfect size for Label is 23
+
+        }
 
         private void RelButton_Click(object sender, RoutedEventArgs e)
         {

@@ -51,33 +51,21 @@ namespace RelatoGraph
             return output.ToString();
         }
 
-        public List<List<int>> splitRelation()
-        {
-            char colon = ',';
-            char semicolon = ';';
-            String relation = RelationValue;
-            int length = relation.Length;
-            List<List<int>> intList = new List<List<int>>();
-            List<int> innerList;
-
-            String[] charArray = relation.Split(semicolon);
-            for (int i = 0; i < charArray.Length; i++)
-            {
-                String[] innercharArray = charArray[i].Split(colon);
-                innerList = innercharArray.Select(x => Int32.Parse(x)).ToList();
-                intList.Add(innerList);
-            }
-
-            return intList;
-        }
-
         public List<int> splitSetA()
         {
             char colon = ',';
             String setA = SetA;
-            String[] charArray = setA.Split(colon);
+            String[] stringArray = setA.Split(colon);
             List<int> intList = new List<int>();
-            intList = charArray.Select(x => Int32.Parse(x)).ToList();
+            for (int i = 0; i < stringArray.Length; i++)
+            {
+                int n;
+                if (!Int32.TryParse(stringArray[i], out n))
+                {
+                    throw new InputNotIntException();
+                }
+                intList.Add(Int32.Parse(stringArray[i]));
+            }
             return intList;
         }
 
@@ -85,9 +73,45 @@ namespace RelatoGraph
         {
             char colon = ',';
             String setB = SetB;
-            String[] charArray = setB.Split(colon);
+            String[] stringArray = setB.Split(colon);
             List<int> intList = new List<int>();
-            intList = charArray.Select(x => Int32.Parse(x)).ToList();
+            for (int i = 0; i < stringArray.Length; i++)
+            {
+                int n;
+                if (!Int32.TryParse(stringArray[i], out n))
+                {
+                    throw new InputNotIntException();
+                }
+                intList.Add(Int32.Parse(stringArray[i]));
+            }
+            return intList;
+        }
+
+        public List<List<int>> splitRelation()
+        {
+            char colon = ',';
+            char semicolon = ';';
+            String relation = RelationValue;
+            int length = relation.Length;
+            List<List<int>> intList = new List<List<int>>();
+            List<int> innerList = new List<int>();
+
+            String[] stringArray = relation.Split(semicolon);
+            for (int x = 0; x < stringArray.Length; x++)
+            {
+                String[] innerStringArray = stringArray[x].Split(colon);
+                for (int i = 0; i < stringArray.Length; i++)
+                {
+                    int n;
+                    if (!Int32.TryParse(stringArray[i], out n))
+                    {
+                        throw new InputNotIntException();
+                    }
+                    innerList.Add(Int32.Parse(innerStringArray[i]));
+                }
+                intList.Add(innerList);
+            }
+
             return intList;
         }
 

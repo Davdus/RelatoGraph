@@ -63,6 +63,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CustomButton.cs" />
+    <Compile Include="InputNotIntException.cs" />
     <Compile Include="Relation.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
