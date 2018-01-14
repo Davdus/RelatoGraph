@@ -99,8 +99,9 @@ namespace RelatoGraph
             String[] stringArray = relation.Split(semicolon);
             for (int x = 0; x < stringArray.Length; x++)
             {
+                innerList = new List<int>();
                 String[] innerStringArray = stringArray[x].Split(colon);
-                for (int i = 0; i < stringArray.Length; i++)
+                for (int i = 0; i < innerStringArray.Length; i++)
                 {
                     int n;
                     if (!stringArray[i].Contains(",") && !Int32.TryParse(stringArray[i], out n))

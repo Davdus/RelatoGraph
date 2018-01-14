@@ -155,6 +155,27 @@ namespace RelatoGraph
         private void Test_Click(object sender, RoutedEventArgs e)
         {
             //perfect size for Label is 23
+            try
+            {
+                aString = SetA.Text;
+                bString = SetB.Text;
+                rString = Relation.Text;
+
+                Relation rel = new Relation(aString, bString, rString);
+                Label l = new Label();
+                l.Content = rel.printList(rel.splitSetA());
+                Label l1 = new Label();
+                l1.Content = rel.printList(rel.splitSetB());
+                Label l2 = new Label();
+                l2.Content = rel.printDoubleList(rel.splitRelation());
+                TopStackPanel.Children.Add(l);
+                TopStackPanel.Children.Add(l1);
+                TopStackPanel.Children.Add(l2);
+            }
+            catch (InputNotIntException)
+            {
+                MessageBox.Show("something went wrong");
+            }
         }
 
         private void RelButton_Click(object sender, RoutedEventArgs e)
