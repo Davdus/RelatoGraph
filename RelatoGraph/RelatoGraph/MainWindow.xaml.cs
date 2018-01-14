@@ -24,6 +24,9 @@ namespace RelatoGraph
         private String defaultTextA = "x1,x2,...";
         private String defaultTextB = "y1,y2,...";
         private String defaultTextR = "x1,y1;x2,y2;...";
+        private String aString;
+        private String bString;
+        private String rString;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,9 +36,9 @@ namespace RelatoGraph
         {
             try
             {
-                String aString = SetA.Text;
-                String bString = SetB.Text;
-                String rString = Relation.Text;
+                aString = SetA.Text;
+                bString = SetB.Text;
+                rString = Relation.Text;
 
                 Relation relation = new Relation(aString, bString, rString);
 
@@ -152,7 +155,6 @@ namespace RelatoGraph
         private void Test_Click(object sender, RoutedEventArgs e)
         {
             //perfect size for Label is 23
-
         }
 
         private void RelButton_Click(object sender, RoutedEventArgs e)

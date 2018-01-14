@@ -60,7 +60,7 @@ namespace RelatoGraph
             for (int i = 0; i < stringArray.Length; i++)
             {
                 int n;
-                if (!Int32.TryParse(stringArray[i], out n))
+                if (!stringArray[i].Contains(",") && !Int32.TryParse(stringArray[i], out n))
                 {
                     throw new InputNotIntException();
                 }
@@ -78,7 +78,7 @@ namespace RelatoGraph
             for (int i = 0; i < stringArray.Length; i++)
             {
                 int n;
-                if (!Int32.TryParse(stringArray[i], out n))
+                if (!stringArray[i].Contains(",") && !Int32.TryParse(stringArray[i], out n))
                 {
                     throw new InputNotIntException();
                 }
@@ -103,7 +103,7 @@ namespace RelatoGraph
                 for (int i = 0; i < stringArray.Length; i++)
                 {
                     int n;
-                    if (!Int32.TryParse(stringArray[i], out n))
+                    if (!stringArray[i].Contains(",") && !Int32.TryParse(stringArray[i], out n))
                     {
                         throw new InputNotIntException();
                     }
