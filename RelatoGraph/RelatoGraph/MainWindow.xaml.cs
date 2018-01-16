@@ -380,11 +380,6 @@ namespace RelatoGraph
             }
         }
 
-        private void Test_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void RelButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is CustomButton)

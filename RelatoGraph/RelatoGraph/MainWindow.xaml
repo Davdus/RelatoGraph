@@ -43,7 +43,6 @@
             </Grid>
 
             <Button Name="Confirm" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Confirm" Grid.Row="1" Width="75" Height="20" Click="Confirm_Click"></Button>
-            <Button Name="Test" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Test" Grid.Row="1" Width="75" Height="20" Click="Test_Click"></Button>
             <Button Name="CollapseAll" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Collapse all" Grid.Row="1" Width="75" Height="20" Click="CollapseAll_Click"></Button>
         </Grid>
 
