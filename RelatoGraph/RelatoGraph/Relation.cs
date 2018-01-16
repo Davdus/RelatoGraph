@@ -254,6 +254,42 @@ namespace RelatoGraph
             return false;
         }
 
+        public bool isFunction()
+        {
+            if (isLefttotal() && isRightunique())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool isSurjective()
+        {
+            if (isFunction() && isRighttotal())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool isInjective()
+        {
+            if (isFunction() && isLeftunique())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool isBijective()
+        {
+            if (isSurjective() && isInjective())
+            {
+                return true;
+            }
+            return false;
+        }
+        
 
 
 

@@ -50,6 +50,11 @@ namespace RelatoGraph
                 Label l5 = new Label();
                 Label l6 = new Label();
                 Label l7 = new Label();
+
+                Label l8 = new Label();
+                Label l9 = new Label();
+                Label l10 = new Label();
+                Label l11 = new Label();
                 b1.Name = "wholeRel" + counter;
                 b1.Content = "Draw this relation";
                 b1.Click += DrawRelation_Click;
@@ -74,6 +79,20 @@ namespace RelatoGraph
                 l7.Content = "One-to-one: " + relation.isOneunique();
                 l7.Height = 23;
 
+                l8.Name = "function";
+                l8.Content = "Function: " + relation.isFunction();
+                l8.Height = 23;
+                l9.Name = "surjective";
+                l9.Content = "Surjective: " + relation.isSurjective();
+                l9.Height = 23;
+                l10.Name = "injective";
+                l10.Content = "Injective: " + relation.isInjective();
+                l10.Height = 23;
+                l11.Name = "bijective";
+                l11.Content = "Bijective: " + relation.isBijective();
+                l11.Height = 23;
+                
+
                 CustomButton btn = new CustomButton(aString, bString, rString);
                 btn.Name = "RelBtn" + counter;
                 btn.Content = ("R" + counter + " = ({" + aString + "} x {" + bString + "}, {" + rString + "})");
@@ -93,6 +112,10 @@ namespace RelatoGraph
                 stack.Children.Add(l5);
                 stack.Children.Add(l6);
                 stack.Children.Add(l7);
+                stack.Children.Add(l8);
+                stack.Children.Add(l9);
+                stack.Children.Add(l10);
+                stack.Children.Add(l11);
                 TopStackPanel.Children.Add(stack);
 
                 counter++;
@@ -359,14 +382,7 @@ namespace RelatoGraph
 
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                
-            }
-            catch (InputNotIntException)
-            {
-                MessageBox.Show("Test failed");
-            }
+            
         }
 
         private void RelButton_Click(object sender, RoutedEventArgs e)

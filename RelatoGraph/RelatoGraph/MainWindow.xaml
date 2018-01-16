@@ -21,7 +21,6 @@
 
             </StackPanel>
         </ScrollViewer>
-        <!-- Test-->
 
         <Canvas Name="MyCanvas" Width="auto" Height="auto" Grid.Column="1" Grid.Row="0">
             
