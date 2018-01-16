@@ -95,16 +95,38 @@ namespace RelatoGraph
             int length = relation.Length;
             List<List<int>> intList = new List<List<int>>();
             List<int> innerList = new List<int>();
-
-            String[] stringArray = relation.Split(semicolon);
-            for (int x = 0; x < stringArray.Length; x++)
+            List<string> testString = new List<string>();
+            String[] splitChar = relation.Split(colon);
+            foreach (String s in splitChar)
             {
-                innerList = new List<int>();
-                String[] innerStringArray = stringArray[x].Split(colon);
+                testString.Add(s);
+            }
+            if (testString.Count > 3)
+            {
+                String[] stringArray = relation.Split(semicolon);
+                for (int x = 0; x < stringArray.Length; x++)
+                {
+                    innerList = new List<int>();
+                    String[] innerStringArray = stringArray[x].Split(colon);
+                    for (int i = 0; i < innerStringArray.Length; i++)
+                    {
+                        int n;
+                        if (!stringArray[i].Contains(",") && !Int32.TryParse(stringArray[i], out n))
+                        {
+                            throw new InputNotIntException();
+                        }
+                        innerList.Add(Int32.Parse(innerStringArray[i]));
+                    }
+                    intList.Add(innerList);
+                }
+            }
+            else
+            {
+                String[] innerStringArray = relation.Split(colon);
                 for (int i = 0; i < innerStringArray.Length; i++)
                 {
                     int n;
-                    if (!stringArray[i].Contains(",") && !Int32.TryParse(stringArray[i], out n))
+                    if (!innerStringArray[i].Contains(",") && !Int32.TryParse(innerStringArray[i], out n))
                     {
                         throw new InputNotIntException();
                     }
@@ -112,6 +134,7 @@ namespace RelatoGraph
                 }
                 intList.Add(innerList);
             }
+            
 
             return intList;
         }
