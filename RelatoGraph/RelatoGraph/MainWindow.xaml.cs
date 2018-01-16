@@ -210,8 +210,14 @@ namespace RelatoGraph
                         if (countA < firstLength)
                         {
                             TextBlock block = new TextBlock();
-                            block.Name = "blockA" + relation.splitSetA().ElementAt(countA);
-                            relation.splitSetA().ElementAt(countA);
+                            if (relation.splitSetA().ElementAt(countA) < 0)
+                            {
+                                block.Name = "blockAminus" + Math.Abs(relation.splitSetA().ElementAt(countA));
+                            }
+                            else
+                            {
+                                block.Name = "blockA" + relation.splitSetA().ElementAt(countA);
+                            }
                             block.Text = "" + relation.splitSetA().ElementAt(countA);
                             block.Width = block.Text.Length * 6.8;
                             block.MaxWidth = 100;
@@ -231,8 +237,14 @@ namespace RelatoGraph
                         if (countB < secondLength)
                         {
                             TextBlock block = new TextBlock();
-                            block.Name = "blockB" + relation.splitSetB().ElementAt(countB);
-                            relation.splitSetB().ElementAt(countB);
+                            if (relation.splitSetB().ElementAt(i) < 0)
+                            {
+                                block.Name = "blockBminus" + Math.Abs(relation.splitSetB().ElementAt(countB));
+                            }
+                            else
+                            {
+                                block.Name = "blockB" + relation.splitSetB().ElementAt(countB);
+                            }
                             block.Text = "" + relation.splitSetB().ElementAt(countB);
                             block.Width = block.Text.Length * 6.8;
                             block.MaxWidth = 100;
@@ -267,8 +279,14 @@ namespace RelatoGraph
                         if (countA < firstLength)
                         {
                             TextBlock block = new TextBlock();
-                            block.Name = "blockA" + relation.splitSetA().ElementAt(countA);
-                            relation.splitSetA().ElementAt(countA);
+                            if (relation.splitSetA().ElementAt(countA) < 0)
+                            {
+                                block.Name = "blockAminus" + Math.Abs(relation.splitSetA().ElementAt(countA));
+                            }
+                            else
+                            {
+                                block.Name = "blockA" + relation.splitSetA().ElementAt(countA);
+                            }
                             block.Text = "" + relation.splitSetA().ElementAt(countA);
                             block.Width = block.Text.Length * 6.8;
                             block.MaxWidth = 100;
@@ -288,8 +306,15 @@ namespace RelatoGraph
                         if (countB < secondLength)
                         {
                             TextBlock block = new TextBlock();
-                            block.Name = "blockB" + relation.splitSetB().ElementAt(countB);
-                            relation.splitSetB().ElementAt(countB);
+                            if (relation.splitSetB().ElementAt(i) < 0)
+                            {
+                                block.Name = "blockBminus" + Math.Abs(relation.splitSetB().ElementAt(countB));
+                            }
+                            else
+                            {
+                                block.Name = "blockB" + relation.splitSetB().ElementAt(countB);
+                            }
+                            
                             block.Text = "" + relation.splitSetB().ElementAt(countB);
                             block.Width = block.Text.Length * 6.8;
                             block.MaxWidth = 100;
@@ -315,7 +340,14 @@ namespace RelatoGraph
                 for (int i = 0; i < firstLength; i++)
                 {
                     TextBlock blockA = new TextBlock();
-                    blockA.Name = "blockA" + relation.splitSetA().ElementAt(i);
+                    if (relation.splitSetA().ElementAt(i) < 0)
+                    {
+                        blockA.Name = "blockAminus" + Math.Abs(relation.splitSetA().ElementAt(i));
+                    }
+                    else
+                    {
+                        blockA.Name = "blockA" + relation.splitSetA().ElementAt(i);
+                    }
                     blockA.Text = "" + relation.splitSetA().ElementAt(i);
                     blockA.Width = blockA.Text.Length * 6.8;
                     blockA.MaxWidth = 100;
@@ -323,7 +355,15 @@ namespace RelatoGraph
                     leftElementTopOffset += 3;
 
                     TextBlock blockB = new TextBlock();
-                    blockB.Name = "blockB" + relation.splitSetB().ElementAt(i);
+                    if (relation.splitSetB().ElementAt(i) < 0)
+                    {
+                        blockB.Name = "blockBminus" + Math.Abs(relation.splitSetB().ElementAt(i));
+                    }
+                    else
+                    {
+                        blockB.Name = "blockB" + relation.splitSetB().ElementAt(i);
+                    }
+                    
                     blockB.Text = "" + relation.splitSetB().ElementAt(i);
                     blockB.Width = blockA.Text.Length * 6.8;
                     blockB.MaxWidth = 100;
@@ -346,26 +386,60 @@ namespace RelatoGraph
             foreach (List<int> innerList in rList)
             {
                 int a = innerList.ElementAt(0);
-                foreach (Object obj in MyCanvas.Children)
+                if (a < 0)
                 {
-                    if (obj is TextBlock)
+                    foreach (Object obj in MyCanvas.Children)
                     {
-                        if (((TextBlock)obj).Name == "blockA" + a)
+                        if (obj is TextBlock)
                         {
-                            x1 = ((TextBlock)obj).Name.Length + ((TextBlock)obj).Margin.Left;
-                            y1 = ((TextBlock)obj).Margin.Top;
+                            if (((TextBlock)obj).Name == "blockAminus" + Math.Abs(a))
+                            {
+                                x1 = ((TextBlock)obj).Name.Length + ((TextBlock)obj).Margin.Left;
+                                y1 = ((TextBlock)obj).Margin.Top;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Object obj in MyCanvas.Children)
+                    {
+                        if (obj is TextBlock)
+                        {
+                            if (((TextBlock)obj).Name == "blockA" + a)
+                            {
+                                x1 = ((TextBlock)obj).Name.Length + ((TextBlock)obj).Margin.Left;
+                                y1 = ((TextBlock)obj).Margin.Top;
+                            }
                         }
                     }
                 }
                 int b = innerList.ElementAt(1);
-                foreach (Object obj in MyCanvas.Children)
+                if (b < 0)
                 {
-                    if (obj is TextBlock)
+                    foreach (Object obj in MyCanvas.Children)
                     {
-                        if (((TextBlock)obj).Name == "blockB" + b)
+                        if (obj is TextBlock)
                         {
-                            x2 = ((TextBlock)obj).Margin.Left;
-                            y2 = ((TextBlock)obj).Margin.Top;
+                            if (((TextBlock)obj).Name == "blockBminus" + Math.Abs(b))
+                            {
+                                x2 = ((TextBlock)obj).Margin.Left;
+                                y2 = ((TextBlock)obj).Margin.Top;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Object obj in MyCanvas.Children)
+                    {
+                        if (obj is TextBlock)
+                        {
+                            if (((TextBlock)obj).Name == "blockB" + b)
+                            {
+                                x2 = ((TextBlock)obj).Margin.Left;
+                                y2 = ((TextBlock)obj).Margin.Top;
+                            }
                         }
                     }
                 }

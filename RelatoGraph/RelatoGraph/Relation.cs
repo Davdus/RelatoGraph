@@ -99,8 +99,20 @@ namespace RelatoGraph
             String[] splitChar = relation.Split(colon);
             foreach (String s in splitChar)
             {
-                testString.Add(s);
+                if (s.Contains(semicolon))
+                {
+                    String[] localSplitChar = s.Split(semicolon);
+                    foreach (String xy in localSplitChar)
+                    {
+                        testString.Add(xy);
+                    }
+                }
+                else
+                {
+                    testString.Add(s);
+                }
             }
+            
             if (testString.Count > 3)
             {
                 String[] stringArray = relation.Split(semicolon);
@@ -111,6 +123,7 @@ namespace RelatoGraph
                     for (int i = 0; i < innerStringArray.Length; i++)
                     {
                         int n;
+                        String s = stringArray[i];
                         if (!stringArray[i].Contains(",") && !Int32.TryParse(stringArray[i], out n))
                         {
                             throw new InputNotIntException();
@@ -126,6 +139,7 @@ namespace RelatoGraph
                 for (int i = 0; i < innerStringArray.Length; i++)
                 {
                     int n;
+                    string sss = innerStringArray[i];
                     if (!innerStringArray[i].Contains(",") && !Int32.TryParse(innerStringArray[i], out n))
                     {
                         throw new InputNotIntException();
@@ -134,8 +148,6 @@ namespace RelatoGraph
                 }
                 intList.Add(innerList);
             }
-            
-
             return intList;
         }
 
