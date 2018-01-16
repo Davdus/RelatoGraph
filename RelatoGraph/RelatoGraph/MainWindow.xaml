@@ -24,12 +24,7 @@
         <!-- Test-->
 
         <Canvas Name="MyCanvas" Width="auto" Height="auto" Grid.Column="1" Grid.Row="0">
-            <!--<TextBlock Name="tblock1" Width="68" Text="123456789023456789456789" Margin="20, 10, 0, 0"/>
-            <TextBlock Name="tblock2" Width="13.8" Text="2" Margin="20, 40, 0, 0"/>
-            <TextBlock Name="tblock3" Width="20.4" Text="3" Margin="400, 10, 0, 0"/>
-            <TextBlock Name="tblock4" Width="20.4" Text="3" Margin="400, 40, 0, 0"/>-->
             
-
         </Canvas>
 
         <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Name="LowerGrid">
