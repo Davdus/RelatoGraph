@@ -311,6 +311,50 @@ namespace RelatoGraph
                     MyCanvas.Children.Add(blockB);
                 }
             }
+
+            double x1 = 0;
+            double y1 = 0;
+
+            double x2 = 0;
+            double y2 = 0;
+
+
+            List<List<int>> rList = relation.splitRelation();
+            foreach (List<int> innerList in rList)
+            {
+                int a = innerList.ElementAt(0);
+                foreach (Object obj in MyCanvas.Children)
+                {
+                    if (obj is TextBlock)
+                    {
+                        if (((TextBlock)obj).Name == "blockA" + a)
+                        {
+                            x1 = ((TextBlock)obj).Name.Length + ((TextBlock)obj).Margin.Left;
+                            y1 = ((TextBlock)obj).Margin.Top;
+                        }
+                    }
+                }
+                int b = innerList.ElementAt(1);
+                foreach (Object obj in MyCanvas.Children)
+                {
+                    if (obj is TextBlock)
+                    {
+                        if (((TextBlock)obj).Name == "blockB" + b)
+                        {
+                            x2 = ((TextBlock)obj).Margin.Left;
+                            y2 = ((TextBlock)obj).Margin.Top;
+                        }
+                    }
+                }
+                Line l = new Line();
+                l.Stroke = Brushes.Black;
+                l.StrokeThickness = 1;
+                l.X1 = x1;
+                l.Y1 = y1;
+                l.X2 = x2;
+                l.Y2 = y2;
+                MyCanvas.Children.Add(l);
+            }
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
