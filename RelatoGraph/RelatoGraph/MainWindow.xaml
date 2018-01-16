@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RelatoGraph"
         mc:Ignorable="d"
-        Title="RelatoGraph" Height="600" Width="800">
+        Title="RelatoGraph" Height="600" Width="800" ResizeMode="NoResize">
     <Grid Name="TopGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -16,12 +16,21 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer>
-            <StackPanel Name="TopStackPanel" Width="auto" Height="auto">
+        <ScrollViewer Margin="-1,0,4.4,56.4" Grid.RowSpan="2">
+            <StackPanel Name="TopStackPanel" Width="auto" Height="auto" Grid.Column="0" Grid.Row="0">
 
             </StackPanel>
         </ScrollViewer>
+        <!-- Test-->
 
+        <Canvas Name="MyCanvas" Width="auto" Height="auto" Grid.Column="1" Grid.Row="0">
+            <!--<TextBlock Name="tblock1" Width="68" Text="123456789023456789456789" Margin="20, 10, 0, 0"/>
+            <TextBlock Name="tblock2" Width="13.8" Text="2" Margin="20, 40, 0, 0"/>
+            <TextBlock Name="tblock3" Width="20.4" Text="3" Margin="400, 10, 0, 0"/>
+            <TextBlock Name="tblock4" Width="20.4" Text="3" Margin="400, 40, 0, 0"/>-->
+            
+
+        </Canvas>
 
         <Grid Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Name="LowerGrid">
             <Grid.RowDefinitions>

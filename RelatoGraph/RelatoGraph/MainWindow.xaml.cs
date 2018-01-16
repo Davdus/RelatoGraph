@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace RelatoGraph
 {
     /// <summary>
@@ -51,19 +52,25 @@ namespace RelatoGraph
                 Label l7 = new Label();
                 l1.Name = "wholeRel" + counter;
                 l1.Content = aString + "|" + bString + "|" + rString;
+                l1.Height = 23;
                 l2.Name = "lefttotal" + counter;
                 l2.Content = "Lefttotal: " + relation.isLefttotal();
+                l2.Height = 23;
                 l3.Name = "righttotal";
                 l3.Content = "Righttotal: " + relation.isRighttotal();
+                l3.Height = 23;
                 l4.Name = "bitotal";
                 l4.Content = "Bitotal: " + relation.isBitotal();
+                l4.Height = 23;
                 l5.Name = "leftunique";
                 l5.Content = "Leftunique: " + relation.isLeftunique();
+                l5.Height = 23;
                 l6.Name = "rightunique";
                 l6.Content = "Rightunique: " + relation.isRightunique();
-                //What is "Eineindeutig" in englisch. Insert in l7.Name and l7.Content
-                l7.Name = "oneunique";
-                l7.Content = "Oneunique: " + relation.isOneunique();
+                l6.Height = 23;
+                l7.Name = "onetoone";
+                l7.Content = "One-to-one: " + relation.isOneunique();
+                l7.Height = 23;
 
                 CustomButton btn = new CustomButton(aString, bString, rString);
                 btn.Name = "RelBtn" + counter;
@@ -151,30 +158,166 @@ namespace RelatoGraph
                 }
             }
         }
-        
+
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            //perfect size for Label is 23
+            //Kind of idea what might be a solution
+            //6.8 is avg size of int
             try
             {
                 aString = SetA.Text;
                 bString = SetB.Text;
                 rString = Relation.Text;
+                Relation relation = new Relation(aString, bString, rString);
+                int leftElementTopOffset = 1;
+                int rightElementTopOffset = 1;
 
-                Relation rel = new Relation(aString, bString, rString);
-                Label l = new Label();
-                l.Content = rel.printList(rel.splitSetA());
-                Label l1 = new Label();
-                l1.Content = rel.printList(rel.splitSetB());
-                Label l2 = new Label();
-                l2.Content = rel.printDoubleList(rel.splitRelation());
-                TopStackPanel.Children.Add(l);
-                TopStackPanel.Children.Add(l1);
-                TopStackPanel.Children.Add(l2);
+                int setALength = relation.splitSetA().Count;
+                int setBLength = relation.splitSetB().Count;
+                if (setALength < setBLength)
+                {
+                    int firstLength = setALength;
+                    int secondLength = setBLength;
+                    int countA = 0;
+                    int countB = 0;
+                    int counter = 0;
+                    
+                    int i = 0;
+                    while (i < secondLength)
+                    {
+                        if (counter % 2 == 0)
+                        {
+                            if (countA < firstLength)
+                            {
+                                TextBlock block = new TextBlock();
+                                block.Name = "blockA" + relation.splitSetA().ElementAt(countA);
+                                relation.splitSetA().ElementAt(countA);
+                                block.Text = "" + relation.splitSetA().ElementAt(countA);
+                                block.Width = block.Text.Length * 6.8;
+                                block.MaxWidth = 100;
+                                block.Margin = new Thickness(20, leftElementTopOffset * 10, 0, 0);
+                                leftElementTopOffset += 3;
+                                MyCanvas.Children.Add(block);
+                                countA++;
+                                counter++;
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        }
+                        else
+                        {
+                            if (countB < secondLength)
+                            {
+                                TextBlock block = new TextBlock();
+                                block.Name = "blockB" + relation.splitSetB().ElementAt(countB);
+                                relation.splitSetB().ElementAt(countB);
+                                block.Text = "" + relation.splitSetB().ElementAt(countB);
+                                block.Width = block.Text.Length * 6.8;
+                                block.MaxWidth = 100;
+                                block.Margin = new Thickness(400, rightElementTopOffset * 10, 0, 0);
+                                rightElementTopOffset += 3;
+                                MyCanvas.Children.Add(block);
+                                countB++;
+                                i++;
+                                counter++;
+                            }
+                            else
+                            {
+                                i++;
+                                counter++;
+                            }
+                        }
+                    }
+                }
+                else if (setBLength < setALength)
+                {
+                    int firstLength = setALength;
+                    int secondLength = setBLength;
+                    int countA = 0;
+                    int countB = 0;
+                    int counter = 0;
+
+                    int i = 0;
+                    while (i < firstLength)
+                    {
+                        if (counter % 2 == 0)
+                        {
+                            if (countA < firstLength)
+                            {
+                                TextBlock block = new TextBlock();
+                                block.Name = "blockA" + relation.splitSetA().ElementAt(countA);
+                                relation.splitSetA().ElementAt(countA);
+                                block.Text = "" + relation.splitSetA().ElementAt(countA);
+                                block.Width = block.Text.Length * 6.8;
+                                block.MaxWidth = 100;
+                                block.Margin = new Thickness(20, leftElementTopOffset * 10, 0, 0);
+                                leftElementTopOffset += 3;
+                                MyCanvas.Children.Add(block);
+                                countA++;
+                                counter++;
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        }
+                        else
+                        {
+                            if (countB < secondLength)
+                            {
+                                TextBlock block = new TextBlock();
+                                block.Name = "blockB" + relation.splitSetB().ElementAt(countB);
+                                relation.splitSetB().ElementAt(countB);
+                                block.Text = "" + relation.splitSetB().ElementAt(countB);
+                                block.Width = block.Text.Length * 6.8;
+                                block.MaxWidth = 100;
+                                block.Margin = new Thickness(400, rightElementTopOffset * 10, 0, 0);
+                                rightElementTopOffset += 3;
+                                MyCanvas.Children.Add(block);
+                                countB++;
+                                i++;
+                                counter++;
+                            }
+                            else
+                            {
+                                i++;
+                                counter++;
+                            }
+                        }
+                    }
+                }
+                else if (setALength == setBLength)
+                {
+                    int firstLength = setALength;
+
+                    for (int i = 0; i < firstLength; i++)
+                    {
+                        TextBlock blockA = new TextBlock();
+                        blockA.Name = "blockA" + relation.splitSetA().ElementAt(i);
+                        blockA.Text = "" + relation.splitSetA().ElementAt(i);
+                        blockA.Width = blockA.Text.Length * 6.8;
+                        blockA.MaxWidth = 100;
+                        blockA.Margin = new Thickness(20, leftElementTopOffset * 10, 0, 0);
+                        leftElementTopOffset += 3;
+
+                        TextBlock blockB = new TextBlock();
+                        blockB.Name = "blockB" + relation.splitSetB().ElementAt(i);
+                        blockB.Text = "" + relation.splitSetB().ElementAt(i);
+                        blockB.Width = blockA.Text.Length * 6.8;
+                        blockB.MaxWidth = 100;
+                        blockB.Margin = new Thickness(400, rightElementTopOffset * 10, 0, 0);
+                        rightElementTopOffset += 3;
+
+                        MyCanvas.Children.Add(blockA);
+                        MyCanvas.Children.Add(blockB);
+                    }
+                }
             }
             catch (InputNotIntException)
             {
-                MessageBox.Show("something went wrong");
+                MessageBox.Show("Test failed");
             }
         }
 
